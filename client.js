@@ -11,12 +11,17 @@ const connect = function () {
   conn.on("connect", () => {
  conn.write("Name: MUS");
  
+ 
+ setInterval(() => {
+   
+   conn.write("Move: up")
+ }, 50)
+
+
+
+
 })
 
-//  setInterval(() => {
-   
-//    conn.write("Move: Up")
-//  }, 50)
   return conn;
 };
 module.exports = connect;
