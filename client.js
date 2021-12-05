@@ -12,10 +12,10 @@ const connect = function () {
  conn.write("Name: MUS");
  
  
- setInterval(() => {
+//  setInterval(() => {
    
-   conn.write("Move: up")
- }, 50)
+//    conn.write("Move: up")
+//  }, 50)
 
 
 

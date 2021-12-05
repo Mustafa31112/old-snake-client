@@ -1,19 +1,29 @@
-const setupInput = function () {
+// const connect = require("./client");
+let connection;
+
+const setupInput = function (conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
-  // stdin.on("data", handleUserInput);
+  const handleUserInput = function (data) {
+    if (data === '\u0003') {
+      process.exit();
+    } 
+    // console.log(connection)
+    if (data === 'w') connection.write('Move: up');
+    if (data === 'a') connection.write('Move: left');
+    if (data === 'd') connection.write('Move: right');
+    if (data === 's') connection.write('Move: down');
+  };
+  stdin.on("data", handleUserInput);
   return stdin;
 };
-const result = setupInput()
-const handleUserInput = function (data) {
-  if (data === '\u0003') {
-    
-    process.exit();
-  } 
-  
-};
-result.on("data", handleUserInput)
+
+
+// console.log(connect())
+// const result = setupInput()
+// result.on("data", handleUserInput)
 
 module.exports = { setupInput };
