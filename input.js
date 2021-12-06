@@ -7,15 +7,33 @@ const setupInput = function (conn) {
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
+
   const handleUserInput = function (data) {
     if (data === '\u0003') {
       process.exit();
-    } 
+    }
+
     // console.log(connection)
-    if (data === 'w') connection.write('Move: up');
-    if (data === 'a') connection.write('Move: left');
-    if (data === 'd') connection.write('Move: right');
-    if (data === 's') connection.write('Move: down');
+    if (data === 'w') {
+      connection.write('Move: up');
+      console.log('Move: up');
+    }
+    if (data === 'a') {
+      connection.write('Move: left');
+      console.log('Move: left');
+    }
+    if (data === 'd') {
+      connection.write('Move: right');
+      console.log('Move: right');
+    }
+    if (data === 's') {
+      connection.write('Move: down');
+      console.log('Move: down');
+    }
+    if (data === 'l') {
+      connection.write('Say: wee');
+    console.log('done');  
+    }
   };
   stdin.on("data", handleUserInput);
   return stdin;
@@ -23,7 +41,7 @@ const setupInput = function (conn) {
 
 
 // console.log(connect())
-// const result = setupInput()
-// result.on("data", handleUserInput)
+// setupInput()
+// 
 
 module.exports = { setupInput };
